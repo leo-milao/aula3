@@ -21,9 +21,9 @@ namespace App.Api.Controllers
         }
 
         [HttpGet("ListaPessoas")]
-        public JsonResult ListaPessoa()
+        public JsonResult ListaPessoa(string nome, int pesoMaiorQue, int pesoMenorQue)
         {
-            return Json(_service.listaPessoas());
+            return Json(_service.listaPessoas(nome, pesoMaiorQue, pesoMenorQue));
         }
         [HttpGet("BuscaPorId")]
         public JsonResult BuscaPorId(Guid id)
@@ -32,6 +32,7 @@ namespace App.Api.Controllers
         }
         [HttpPost("Salvar")]
         public JsonResult Salvar(string nome, int peso, DateTime dataNascimento, bool ativo, Guid idCidade)
+
         {
             var obj = new Pessoa()
             {
