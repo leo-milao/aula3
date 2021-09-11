@@ -26,8 +26,20 @@ namespace App.Application.Services
 
         public List<Pessoa> listaPessoas()
         {
-            return _repository.Query(x => 1 == 1).ToList();
+            // return _repository.Query(x => 1 == 1).ToList();
+            return _repository.Query(x => 1 == 1)
+                .Select(p => new Pessoa
+                {
+                    Id = p.Id,
+                    Nome = p.Nome,
+                    Peso = p.Peso,
+                    Cidade = new Cidade
+                    {
+                        Nome = p.Cidade.Nome
+                    }
+                }).ToList();
         }
+
         public void Salvar(Pessoa obj)
         {
             if (string.IsNullOrEmpty(obj.Nome))
@@ -37,7 +49,7 @@ namespace App.Application.Services
             _repository.Save(obj);
             _repository.SaveChanges();
         }
-        public void Remover (Guid id)
+        public void Remover(Guid id)
         {
             _repository.Delete(id);
             _repository.SaveChanges();

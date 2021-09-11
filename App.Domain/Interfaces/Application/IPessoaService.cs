@@ -15,6 +15,5 @@ namespace App.Domain.Interfaces.Application
         void Remover(Guid id);
         
         
-        
     }
 }
