@@ -11,34 +11,28 @@ namespace App.Api.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class PessoaController : Controller
+    public class CidadeController : Controller
     {
-        private IPessoaService _service;
+        private ICidadeService _service;
 
-        public PessoaController(IPessoaService service)
+        public CidadeController(ICidadeService service)
         {
             _service = service;
         }
 
-        [HttpGet("ListaPessoas")]
-        public JsonResult ListaPessoa()
+        [HttpGet("ListaCidades")]
+        public JsonResult ListaCidade()
         {
-            return Json(_service.listaPessoas());
-        }
-        [HttpGet("BuscaPorId")]
-        public JsonResult BuscaPorId(Guid id)
-        {
-            return Json(_service.BuscaPorId(id));
+            return Json(_service.listaCidades());
         }
         [HttpPost("Salvar")]
-        public JsonResult Salvar(string nome, int peso, DateTime dataNascimento, bool ativo)
+        public JsonResult Salvar(string nome, int cep, string uf, bool ativo)
         {
-            var obj = new Pessoa()
+            var obj = new Cidade()
             {
                 Nome = nome,
-                DataNascimento = dataNascimento,
-                Peso = peso,
-                Ativo = ativo
+                Cep = cep,
+                Uf = uf
             };
             _service.Salvar(obj);
             return Json(true);
