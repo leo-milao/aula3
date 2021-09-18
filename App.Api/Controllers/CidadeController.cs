@@ -1,4 +1,5 @@
-﻿using App.Domain.Entities;
+﻿using App.Domain.DTO;
+using App.Domain.Entities;
 using App.Domain.Interfaces.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,8 +24,18 @@ namespace App.Api.Controllers
         [HttpGet("ListaCidades")]
         public JsonResult ListaCidade()
         {
-            return Json(_service.listaCidades());
+            try
+            {
+                var obj = _service.listaCidades();
+                return Json(RetornoApi.Sucesso(obj));
+            }
+            catch (Exception ex)
+            {
+                return Json(RetornoApi.Erro(ex.Message));
+            }
         }
+
+
         [HttpPost("Salvar")]
         public JsonResult Salvar(string nome, int cep, string uf, bool ativo)
         {
@@ -37,6 +48,7 @@ namespace App.Api.Controllers
             _service.Salvar(obj);
             return Json(true);
         }
+
         [HttpDelete("Deletar")]
         public JsonResult Deletar(Guid id)
         {
