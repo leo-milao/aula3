@@ -4,13 +4,15 @@
 
 
 function load() {
-    CidadeListaCidades().then(function (data) {
+    load 
+    PessoaListaPessoas().then(function (data) {
         data.forEach(obj => {
             $('#table tbody').append('' +
                 '<tr id="obj-' + obj.id + '">' +
-                '<td>' + (obj.cep || '--') + '</td>' +
+                '<td>' + (obj.peso || '--') + '</td>' +
                 '<td>' + (obj.nome || '--') + '</td>' +
-                '<td>' + (obj.uf || '--') + '</td>' +
+                '<td>' + (moment(obj.dataNascimento).format('DD/MM/YYYY') || '--') +'</td>' +
+                '<td>' + (obj.cidade.nome || '--') + '</td>' +
                 '</tr>');
         });
     });

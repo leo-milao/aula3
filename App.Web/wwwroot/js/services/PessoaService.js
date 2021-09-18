@@ -1,8 +1,8 @@
 ﻿
 
-async function CidadeListaCidades() {
+async function PessoaListaPessoas() {
     return new Promise((resolve, reject) => {
-        Get('Cidade/ListaCidades').then(function (response) {
+        Get('Pessoa/ListaPessoas').then(function (response) {
             if (response.status === 'success') {
                 resolve(response.data);
             } else {
@@ -15,9 +15,9 @@ async function CidadeListaCidades() {
     });
 }
 
-async function CidadeBuscaPorId(id) {
+async function PessoaBuscaPorId(id) {
     return new Promise((resolve, reject) => {
-        Get('Cidade/BuscaPorId?id=' + id).then(function (response) {
+        Get('Pessoa/BuscaPorId?id=' + id).then(function (response) {
             if (response.status === 'success') {
                 resolve(response.data);
             } else {
@@ -30,9 +30,9 @@ async function CidadeBuscaPorId(id) {
     });
 }
 
-async function CidadeSalvar(obj) {
+async function PessoaSalvar(obj) {
     return new Promise((resolve, reject) => {
-        Post('Cidade/Salvar', obj).then(function (response) {
+        Post('Pessoa/Salvar', obj).then(function (response) {
             if (response.status === 'success') {
                 resolve(response.data);
             } else {
@@ -45,9 +45,9 @@ async function CidadeSalvar(obj) {
     });
 }
 
-async function CidadeRemover(id) {
+async function PessoaRemover(id) {
     return new Promise((resolve, reject) => {
-        Delete('Cidade/Remover?id=' + id).then(function (response) {
+        Delete('Pessoa/Remover?id=' + id).then(function (response) {
             if (response.status === 'success') {
                 resolve(response.data);
             } else {

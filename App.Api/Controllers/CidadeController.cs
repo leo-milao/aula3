@@ -35,18 +35,18 @@ namespace App.Api.Controllers
             }
         }
 
-
         [HttpPost("Salvar")]
-        public JsonResult Salvar(string nome, int cep, string uf, bool ativo)
+        public JsonResult Salvar([FromBody] Cidade obj)
         {
-            var obj = new Cidade()
+            try
             {
-                Nome = nome,
-                Cep = cep,
-                Uf = uf
-            };
-            _service.Salvar(obj);
-            return Json(true);
+                _service.Salvar(obj);
+                return Json(RetornoApi.Sucesso(true));
+            }
+            catch (Exception ex)
+            {
+                return Json(RetornoApi.Erro(ex.Message));
+            }
         }
 
         [HttpDelete("Deletar")]

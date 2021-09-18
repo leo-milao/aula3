@@ -40,6 +40,7 @@ namespace App.Application.Services
                     Id = p.Id,
                     Nome = p.Nome,
                     Peso = p.Peso,
+                    DataNascimento = p.DataNascimento,
                     Cidade = new Cidade
                     {
                         Nome = p.Cidade.Nome

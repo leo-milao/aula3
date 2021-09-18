@@ -1,0 +1,21 @@
+﻿@page "/pessoas"
+<h4>Lista de Pessoas</h4>
+<button class="btn btn-dark" onclick="window.location.href = '/pessoas/formulario'">Adicionar</button>
+<div class="table-responsive" id="table">
+    <table class="table mb-0">
+        <thead>
+            <tr>
+                <th>Peso</th>
+                <th>Nome</th>
+                <th>DataNascimento</th>
+                <th>Cidade</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/pages/pessoas.js"></script>
+}

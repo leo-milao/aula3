@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace App.Web.wwwroot.js.core {
-    public class requester {
-    }
-}
+﻿
 async function Get(url) {
     return new Promise((resolve, reject) => {
         url = ResolveUrl(url);
@@ -150,7 +142,7 @@ function GetApiAddress() {
         if (window.location.host.indexOf('demo') > -1) {
             return "https://demoautenticador.abase.com.br/api/";
         }
-        return "https://localhost:44368/";
+        return "https://localhost:44303/";
     }
     return new URL(window.location.href).origin + "/api/";
 }

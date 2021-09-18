@@ -1,4 +1,5 @@
-﻿using App.Domain.Entities;
+﻿using App.Domain.DTO;
+using App.Domain.Entities;
 using App.Domain.Interfaces.Application;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,13 +24,23 @@ namespace App.Api.Controllers
         [HttpGet("ListaPessoas")]
         public JsonResult ListaPessoa(string nome, int pesoMaiorQue, int pesoMenorQue)
         {
-            return Json(_service.listaPessoas(nome, pesoMaiorQue, pesoMenorQue));
+            try
+            {
+                var obj = _service.listaPessoas(nome, pesoMaiorQue, pesoMenorQue);
+                return Json(RetornoApi.Sucesso(obj));
+            }
+            catch (Exception ex)
+            {
+                return Json(RetornoApi.Erro(ex.Message));
+            }
         }
+
         [HttpGet("BuscaPorId")]
         public JsonResult BuscaPorId(Guid id)
         {
             return Json(_service.BuscaPorId(id));
         }
+
         [HttpPost("Salvar")]
         public JsonResult Salvar(string nome, int peso, DateTime dataNascimento, bool ativo, Guid idCidade)
 
